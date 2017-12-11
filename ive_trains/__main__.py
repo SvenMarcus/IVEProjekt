@@ -3,8 +3,8 @@ from typing import Dict
 import re
 
 from ive_trains.reader.CsvReader import readFile
-from ive_trains.reader.TrainDataProcessor import processFolder
-from ive_trains.reader.TrainListParser import TrainListDialect
+from ive_trains.reader.TrainDataProcessor import processDrivingDynamics
+from ive_trains.reader.TrainListProcessor import TrainListDialect, processTrainList
 
 
 def filterFolder(folder: Dict):
@@ -19,8 +19,21 @@ def filterFolder(folder: Dict):
 
 
 if __name__ == "__main__":
-    folder = processFolder("/Users/svenmarcus/Documents/Institut/IVE/neu")
-    print(folder)
-    # print(readFile("./Zugliste.csv", TrainListDialect()))
+    # folder = processFolder("/Users/svenmarcus/Documents/Institut/IVE/neu")
+    # print(folder)
+    # file = readFile("./Zugliste.csv", TrainListDialect())
+
+    # listEntry = file[0]
+    # detailString: str = listEntry[0]
+    # trainId: int = int(listEntry[1])
+    #
+    # print(detailString.split('\\'))
+    #
+    # listEntry = file[36]
+    # detailString: str = listEntry[0]
+    # print(detailString.split('\\'))
+
+    print(processTrainList("./Zugliste.csv"))
+
 
 

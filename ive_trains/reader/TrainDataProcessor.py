@@ -16,7 +16,7 @@ class TrainDataDialect(Dialect):
     quoting = QUOTE_MINIMAL
 
 
-def processFolder(path: str) -> Dict[str, Dict[str, Dict]]:
+def processDrivingDynamics(path: str) -> Dict[str, Dict[str, Dict]]:
     firstData: Dict[str, Dict[str, Dict]] = None
     filesInFolder = os.listdir(path)
     noOfDatFiles: int = 0

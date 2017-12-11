@@ -11,10 +11,7 @@ def readFile(filePath: str, dialect=None) -> List[List[str]]:
 
         reader = csv.reader(csvfile, dialect)
 
-
         for row in reader:
             lst.append(row)
-            # lst.append(row[0].split(dialect.delimiter))
-
 
         return lst
