@@ -18,6 +18,16 @@ def processTrainResults(folder) -> None:
             trackFile = readFile(trainTypeFileName, TrainListDialect())
             trainTypeTrackDict[trainType] = trackFile
 
+    for trainId in allTrainData:
+        actualTrainType = None
+        for trainType in trainTypeTrackDict:
+            if trainId in trainTypeTrackDict[trainType]:
+                actualTrainType = trainType
+
+        if actualTrainType is not None:
+            for track in allTrainData[trainId]:
+                splitTrack = track.split("-")
+                # trackEntry = getTrackWith()
 
 indexLookup: Dict[List[str], int] = {}
 
