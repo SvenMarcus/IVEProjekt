@@ -23,7 +23,7 @@ def processDrivingDynamics(path: str) -> Dict[str, Dict[str, Dict]]:
     for file in filesInFolder:
         if file.endswith(".dat"):
             noOfDatFiles += 1
-            print(file)
+            print("Parsing file " + file)
 
             file = readFile(os.path.join(path, file), TrainDataDialect())
             data: Dict[str, Dict[str, Dict]] = parseDailyTrainData(file)

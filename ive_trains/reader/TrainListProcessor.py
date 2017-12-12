@@ -30,7 +30,6 @@ def processTrainList(file: str) -> Dict[str, List[int]]:
 
         detailStrings: List[str] = listEntry[0].split('\\')
         trainType: str = detailStrings[1]
-        print(trainType)
 
         if trainType not in typeDict.keys():
             typeDict[trainType] = []

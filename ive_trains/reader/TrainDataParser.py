@@ -72,7 +72,8 @@ def parseRawDataRow(row) -> Dict[str, object]:
 
 def writeTrainData(dailyTrainData: Dict[str, Dict[str, Dict]], energy: float, lastStation: str, station: str, timeSum: float, trainId: str) -> None:
     if lastStation:
-        track = re.sub(' +', ' ', lastStation.strip() + "-" + station.strip())
+        # track = re.sub(' +', ' ', lastStation.strip() + "-" + station.strip())
+        track = lastStation + "-" + station
         if energy < 0:
             print(trainId + " " + track + " " + str(energy))
         trainData: Dict = {"time": timeSum, "energy": energy}

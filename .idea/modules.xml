@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/IVETrainProject.iml" filepath="$PROJECT_DIR$/.idea/IVETrainProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../IVETrainResultWriter/.idea/IVETrainResultWriter.iml" filepath="$PROJECT_DIR$/../IVETrainResultWriter/.idea/IVETrainResultWriter.iml" />
     </modules>
   </component>
 </project>
