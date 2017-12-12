@@ -16,7 +16,7 @@ indexLookup: Dict[str, int] = {}
 
 
 def processTrainResults(folder) -> None:
-    trainTypeDict: Dict[str, List[int]] = processTrainList(path.join(folder, "Zugliste.csv"))
+    trainTypeDict: Dict[str, List[str]] = processTrainList(path.join(folder, "Zugliste.csv"))
     allTrainData: Dict[str, Dict[str, Dict]] = processDrivingDynamics(folder)
     trainTypeTrackDict: Dict[str, List[List[str]]] = {}
 
@@ -28,7 +28,7 @@ def processTrainResults(folder) -> None:
     for trainId in allTrainData:
         actualTrainType = None
         for trainType in trainTypeTrackDict:
-            if int(trainId) in trainTypeDict[trainType]:
+            if trainId in trainTypeDict[trainType]:
                 actualTrainType = trainType
 
         if actualTrainType is not None:
@@ -47,6 +47,7 @@ def processTrainResults(folder) -> None:
                         float(trackEntry[len(trackEntry) - 2]) + allTrainData[trainId][track]["energy"])
                     trackEntry[len(trackEntry) - 1] = str(
                         float(trackEntry[len(trackEntry) - 1]) + allTrainData[trainId][track]["time"])
+                    
 
     for trainType in trainTypeTrackDict:
         trainTypeFileName = trainType + ".csv"

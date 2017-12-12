@@ -19,6 +19,7 @@ class TrainDataDialect(Dialect):
 def processDrivingDynamics(path: str) -> Dict[str, Dict[str, Dict]]:
     firstData: Dict[str, Dict[str, Dict]] = None
     filesInFolder = os.listdir(path)
+    print(filesInFolder)
     noOfDatFiles: int = 0
     for file in filesInFolder:
         if file.endswith(".dat"):

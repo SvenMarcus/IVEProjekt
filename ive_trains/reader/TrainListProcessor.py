@@ -16,17 +16,27 @@ class TrainListDialect(Dialect):
 # Example entry:
 # ['\\PNV-D\\N34 Glauburg-Stockheim - Frankfurt (Main) Hbf\\rÃ¼ck\\RB Diesel 1703435', ... ]
 
-def processTrainList(file: str) -> Dict[str, List[int]]:
+def processTrainList(file: str) -> Dict[str, List[str]]:
     trainList: List[List[str]] = readFile(file, TrainListDialect())
-    typeDict: Dict[str, List[int]] = {}
+    typeDict: Dict[str, List[str]] = {}
 
+    first = True
     for listEntry in trainList:
+        if first:
+            first = False
+            continue
+
         if len(listEntry) < 2:
             continue
 
-        trainId = tryIntConversion(listEntry[1])
-        if trainId == -1:
+        # trainId = tryIntConversion(listEntry[1])
+        # if trainId == -1:
+        #     continue
+
+        if not listEntry[1]:
             continue
+
+        trainId = listEntry[1]
 
         detailStrings: List[str] = listEntry[0].split('\\')
         trainType: str = detailStrings[1]
