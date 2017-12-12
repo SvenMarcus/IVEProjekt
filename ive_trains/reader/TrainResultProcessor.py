@@ -40,14 +40,16 @@ def processTrainResults(folder) -> None:
 
                 if len(trackEntry) != 0:
                     header = trainTypeTrackDict[actualTrainType][0]
-                    while len(trackEntry) != len(header):
+                    while len(trackEntry) < (len(header) + 1):
                         trackEntry.append("0")
 
+                    trackEntry[len(trackEntry) - 3] = str(
+                        float(trackEntry[len(trackEntry) - 3]) + allTrainData[trainId][track]["energy"])
                     trackEntry[len(trackEntry) - 2] = str(
-                        float(trackEntry[len(trackEntry) - 2]) + allTrainData[trainId][track]["energy"])
+                        float(trackEntry[len(trackEntry) - 2]) + allTrainData[trainId][track]["time"])
                     trackEntry[len(trackEntry) - 1] = str(
-                        float(trackEntry[len(trackEntry) - 1]) + allTrainData[trainId][track]["time"])
-                    
+                        float(trackEntry[len(trackEntry) - 1]) + allTrainData[trainId][track]["noEntries"])
+
 
     for trainType in trainTypeTrackDict:
         trainTypeFileName = trainType + ".csv"
@@ -77,7 +79,7 @@ def getTrackWith(trackData, start: str, end: str) -> List[str]:
         if len(track) < 3:
             continue
 
-        if track[0] == start and track[2] == end:
+        if track[0] == start and track[2] == end or track[0] == end and track[2] == start:
             indexLookup[trackString] = i
             return track
     return []
