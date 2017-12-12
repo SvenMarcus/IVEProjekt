@@ -13,9 +13,6 @@ class TrainListDialect(Dialect):
     quoting = QUOTE_MINIMAL
 
 
-# Example entry:
-# ['\\PNV-D\\N34 Glauburg-Stockheim - Frankfurt (Main) Hbf\\rÃ¼ck\\RB Diesel 1703435', ... ]
-
 def processTrainList(file: str) -> Dict[str, List[str]]:
     trainList: List[List[str]] = readFile(file, TrainListDialect())
     typeDict: Dict[str, List[str]] = {}

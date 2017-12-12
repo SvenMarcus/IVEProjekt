@@ -47,7 +47,6 @@ def processTrainResults(folder) -> None:
                         float(trackEntry[len(trackEntry) - 2]) + allTrainData[trainId][track]["energy"])
                     trackEntry[len(trackEntry) - 1] = str(
                         float(trackEntry[len(trackEntry) - 1]) + allTrainData[trainId][track]["time"])
-                    
 
     for trainType in trainTypeTrackDict:
         trainTypeFileName = trainType + ".csv"
@@ -77,7 +76,10 @@ def getTrackWith(trackData, start: str, end: str) -> List[str]:
         if len(track) < 3:
             continue
 
-        if track[0] == start and track[2] == end:
+        firstIsStartSecondIsEnd = track[0] == start and track[2] == end
+        firstIsEndSecondIsStart = track[0] == end and track[2] == start
+
+        if firstIsStartSecondIsEnd or firstIsEndSecondIsStart:
             indexLookup[trackString] = i
             return track
     return []
